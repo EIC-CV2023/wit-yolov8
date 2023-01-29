@@ -20,6 +20,10 @@ import yaml
 
 mp_hands = mp.solutions.hands
 
+WEIGHT = "cokebest-fs-seg.pt"
+# DATASET_NAME = "coco"
+DATASET_NAME = {0: "coke"}
+
 
 class V8Tracker:
     def __init__(self, weight="yolov8s-seg.pt", conf=0.5, dataset_name="coco", sort_max_age=10, sort_min_hits=5, sort_iou_thresh=0.2, show_result=False):
@@ -155,7 +159,7 @@ def main():
 
     # OT = ObjectTracker()
     WIT = WhatIsThat()
-    V8T = V8Tracker(weight="cokebest-fs-seg.pt", dataset_name={0: "coke"})
+    V8T = V8Tracker(weight=WEIGHT, dataset_name=DATASET_NAME)
 
     while True:
         conn, addr = server.sock.accept()
